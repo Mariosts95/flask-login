@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        {% include "_head.html" %}
+        <title>{% block title required %}{% endblock %} | Flask</title>
+    </head>
+    <body>
+        {% include "_menu.html" %}
+        <div class="wrapper">
+            {% block main required %}{% endblock %}
+            <ul class="bg-bubbles">
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+                <li></li>
+            </ul>
+        </div>
+    </body>
+</html>

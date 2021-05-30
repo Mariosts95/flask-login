@@ -2,3 +2,5 @@ FLASK_APP=app.py
 FLASK_ENV=development
 
 SERVER_PORT=5000
+
+SECRET_KEY = b'\xe7pQ\xf4\xee<!\xe8\xa8\x93\xd1\x80\x92\x08H,z\x9b\xfd n\xb4\x0f\x9f'
