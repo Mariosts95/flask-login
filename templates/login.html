@@ -1,7 +1,5 @@
-{% extends "_layout.html" %}
-{% block title %}Login{% endblock %}
-
-{% block main %}
+{% extends "_layout.html" %} {% block title %}Login{% endblock %} {% block main
+%}
 
 <div class="login-container">
     <h1>Welcome</h1>
@@ -11,15 +9,16 @@
         <input type="password" name="password" placeholder="Password" />
         <button type="submit" id="login-button">Login</button>
     </form>
-    {# {% with messages = get_flashed_messages() %}
-  {% if messages %}
-    <ul class=flashes>
+    {# get the flash messages #}
+    {% with messages = get_flashed_messages() %}
+    {# check if there are any messages #}
+    {% if messages %}
+    {# need the for because get_flashed_messages() returns list #}
     {% for message in messages %}
-      <li>{{ message }}</li>
+    <div class="flashes">{{ message }}</div>
     {% endfor %}
-    </ul>
-  {% endif %}
-{% endwith %} #}
+    {% endif %}
+    {% endwith %}
 </div>
 
 {% endblock main %}

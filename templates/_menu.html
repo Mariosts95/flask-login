@@ -4,7 +4,11 @@
         <div class="menu">
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
+                {% if not username %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
+                {% else %}
+                <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                {% endif %}
             </ul>
         </div>
     </nav>
