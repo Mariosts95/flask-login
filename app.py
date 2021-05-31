@@ -8,6 +8,9 @@ app.secret_key = environ.get('SECRET_KEY')
 
 @app.route('/')
 def home():
+    # if you are already login, redirect to your profile
+    # if 'username' in session:
+    #     return redirect(url_for('profile'))
     return render_template('index.html')
 
 
@@ -22,8 +25,11 @@ def loginAuth():
     password = request.form.get('password')
 
     if username == 'admin' and password == 'admin':
-        session['logged_in'] = username
-        return redirect(url_for('profile', username=username))
+        session['username'] = username
+        return redirect(url_for('profile'))
+    elif username == 'marios' and password == 'marios':
+        session['username'] = username
+        return redirect(url_for('profile'))
     else:
         flash('Username or password invalid')
         return redirect(url_for('login'))
@@ -31,16 +37,17 @@ def loginAuth():
 
 @app.route('/logout')
 def logout():
-    session.pop('logged_in', None)
+    session.pop('username', None)
     return redirect(url_for('login'))
 
 
 @app.route('/profile')
 @app.route('/profile/<username>')
-def profile(username):
-    if not session['logged_in'] == username:
+def profile(username=''):
+    if 'username'not in session:
         abort(401)
     else:
+        username = session['username']
         return render_template('profile.html', username=username)
 
 

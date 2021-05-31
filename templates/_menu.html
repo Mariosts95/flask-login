@@ -4,7 +4,10 @@
         <div class="menu">
             <ul>
                 <li><a href="{{ url_for('home') }}">Home</a></li>
-                {% if not username %}
+                {% if session['username'] %}
+                <li><a href="{{ url_for('profile', username=session['username']) }}">Hello, {{ session['username'] }}</a></li>
+                {% endif %}
+                {% if not session['username'] %}
                 <li><a href="{{ url_for('login') }}">Login</a></li>
                 {% else %}
                 <li><a href="{{ url_for('logout') }}">Logout</a></li>

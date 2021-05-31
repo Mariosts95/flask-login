@@ -2,6 +2,10 @@
 main %}
 <div class="home-container">
     <div class="glass"></div>
+    {% if session['username'] %}
+    <div class="home-text">Welcome, {{ session['username'] }}</div>
+    {% else %}
     <div class="home-text">Welcome to my login system</div>
+    {% endif %}
 </div>
 {% endblock main %}
