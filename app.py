@@ -1,5 +1,5 @@
 from os import environ
-from flask import Flask, render_template, abort, url_for, redirect, request, flash, session
+from flask import Flask, render_template, url_for, redirect, request, flash, session
 
 app = Flask(__name__)
 # get the sercet key for the session from .flaskenv
@@ -23,6 +23,7 @@ def loginAuth():
 
     if username == 'admin' and password == 'admin':
         session['username'] = username
+        flash('Login successful')
         return redirect(url_for('profile', username=username))
     else:
         flash('login error')

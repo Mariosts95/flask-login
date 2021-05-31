@@ -1,8 +1,22 @@
-{% extends "_layout.html" %}
-{% block title %} {{username}} {% endblock %}
-
-{% block main %}
+{% extends "_layout.html" %} {% block title %} {{username}} {% endblock %} {%
+block main %}
 <div class="profile-container">
+    <div class="profile-card">
+        <div class="profile-item">
+            <!-- here’s the avatar -->
+            <a href="#">
+                <img
+                    src="http://lorempixel.com/150/150/people/"
+                    class="hoverZoomLink"
+                />
+            </a>
 
+            <!-- the username -->
+            <h1>{{ username }}</h1>
+
+            <!-- and role or location -->
+            <h2>{{ username }}@email.com</h2>
+        </div>
+    </div>
 </div>
 {% endblock main %}
