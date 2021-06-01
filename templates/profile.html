@@ -1,5 +1,5 @@
-{% extends "_layout.html" %} {% block title %} {{ session['username'] }} {% endblock %} {%
-block main %}
+{% extends "_layout.html" %} {% block title %} {{ username }} {% endblock %}
+{%block main %}
 <div class="profile-container">
     <div class="profile-card">
         <div class="profile-item">
@@ -12,10 +12,10 @@ block main %}
             </a>
 
             <!-- the username -->
-            <h1>{{ session['username'] }}</h1>
+            <h1>{{ username }}</h1>
 
             <!-- and role or location -->
-            <h2>{{ session['username'] }}@email.com</h2>
+            <h2>{{ username }}@email.com</h2>
         </div>
     </div>
 </div>

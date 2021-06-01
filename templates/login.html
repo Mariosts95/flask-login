@@ -1,5 +1,5 @@
-{% extends "_layout.html" %} {% block title %}Login{% endblock %} {% block main
-%}
+{% extends "_layout.html" %} {% block title %}Login{% endblock %}
+{% block main %}
 
 <div class="login-container">
     <h1>Welcome</h1>
@@ -10,15 +10,15 @@
         <button type="submit" id="login-button">Login</button>
     </form>
     {# get the flash messages #}
-    {% with messages = get_flashed_messages() %}
+    {# {% with messages = get_flashed_messages() %} #}
     {# check if there are any messages #}
-    {% if messages %}
+    {# {% if messages %} #}
     {# need the for because get_flashed_messages() returns list #}
-    {% for message in messages %}
+    {% for message in get_flashed_messages() %}
     <div class="flashes">{{ message }}</div>
     {% endfor %}
-    {% endif %}
-    {% endwith %}
+    {# {% endif %} #}
+    {# {% endwith %} #}
 </div>
 
 {% endblock main %}

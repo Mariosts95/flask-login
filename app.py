@@ -30,6 +30,9 @@ def loginAuth():
     elif username == 'marios' and password == 'marios':
         session['username'] = username
         return redirect(url_for('profile'))
+    elif username == 'nbilalis' and password == 'nbilalis':
+        session['username'] = username
+        return redirect(url_for('easterEgg'))
     else:
         flash('Username or password invalid')
         return redirect(url_for('login'))
@@ -58,10 +61,19 @@ def page_not_found(e):
     return render_template('errors/404.html'), 404
 
 
+# Handles the errors when something is restricted
 @app.errorhandler(401)
 def page_forbidden(e):
     app.logger.debug(e)
     return redirect(url_for('login')), 401
+
+
+# easter egg
+@app.route('/easteregg')
+def easterEgg():
+    if 'username'not in session:
+        abort(401)
+    return render_template('easteregg.html')
 
 
 if __name__ == '__main__':
