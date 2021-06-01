@@ -26,10 +26,10 @@ def loginAuth():
 
     if username == 'admin' and password == 'admin':
         session['username'] = username
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile', username=username))
     elif username == 'marios' and password == 'marios':
         session['username'] = username
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile', username=username))
     elif username == 'nbilalis' and password == 'nbilalis':
         session['username'] = username
         return redirect(url_for('easterEgg'))
@@ -44,10 +44,9 @@ def logout():
     return redirect(url_for('login'))
 
 
-@app.route('/profile')
 @app.route('/profile/<username>')
-def profile(username=''):
-    if 'username'not in session:
+def profile(username=None):
+    if 'username' not in session or username != session['username']:
         abort(401)
     else:
         username = session['username']
@@ -65,7 +64,7 @@ def page_not_found(e):
 @app.errorhandler(401)
 def page_forbidden(e):
     app.logger.debug(e)
-    return redirect(url_for('login')), 401
+    return render_template('errors/401.html'), 401
 
 
 # easter egg
