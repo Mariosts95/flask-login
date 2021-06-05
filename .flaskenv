@@ -3,4 +3,4 @@ FLASK_ENV=development
 
 SERVER_PORT=5000
 
-SECRET_KEY = b'\xe7pQ\xf4\xee<!\xe8\xa8\x93\xd1\x80\x92\x08H,z\x9b\xfd n\xb4\x0f\x9f'
+SECRET_KEY=e2b2392c5b1860ee81637b8ff99af2d6a973b949279e01bd
