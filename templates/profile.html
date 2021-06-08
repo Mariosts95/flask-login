@@ -1,22 +1,30 @@
-{% extends "_layout.html" %} {% block title %} {{ username }} {% endblock %}
-{%block main %}
-<div class="profile-container">
-    <div class="profile-card">
-        <div class="profile-item">
-            <!-- here’s the avatar -->
-            <a href="#">
-                <img
-                    src="http://lorempixel.com/150/150/people/"
-                    class="hoverZoomLink"
-                />
-            </a>
-
-            <!-- the username -->
-            <h1>{{ username }}</h1>
-
-            <!-- and role or location -->
-            <h2>{{ username }}@email.com</h2>
-        </div>
+{% extends "_layout.html" %} {% block title %} {{ user['username'] }} {%
+endblock %} {%block main %}
+<div class="profile-card">
+    <div class="profile-item">
+    {% if user['username'] == 'nbilalis' %}
+        <a href="{{ url_for('profile', username=session['username']) }}">
+            <img
+                src="https://i1.sndcdn.com/artworks-000118221818-rj6hd9-t500x500.jpg"
+                class="hoverZoomLink"
+            />
+        </a>
+        {% else %}
+        <a href="{{ url_for('profile', username=session['username']) }}">
+            <img
+                src="https://source.unsplash.com/collection/888146/150x150"
+                class="hoverZoomLink"
+            />
+        </a>
+        {% endif %}
+        <h1>Hello, {{ user['firstname'] }} {{ user['lastname'] }}</h1>
+        <h2>Username:</h2>
+        <p>{{ user['username'] }}</p>
+        <h2>Email:</h2>
+        <p>{{ user['email'] }}</p>
+        {% if user['username'] == 'nbilalis' %}
+        <a class="easter-egg-link" href="{{ url_for('easterEgg') }}">Easter egg</a>
+        {% endif %}
     </div>
 </div>
 {% endblock main %}
