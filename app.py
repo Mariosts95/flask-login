@@ -62,7 +62,7 @@ def loginAuth():
     cursor.close()
     # if the query returns 0 result
     if not user:
-        flash('Username or password invalid')
+        flash('Incorrect username or password.')
         return redirect(url_for('login'))
     # easter egg
     elif user['username'] == 'nbilalis':
