@@ -5,4 +5,4 @@ SERVER_PORT=5000
 
 SECRET_KEY=e2b2392c5b1860ee81637b8ff99af2d6a973b949279e01bd
 
-DATABASE_PATH='/database/flask_login.db'
+DATABASE_URI='database/flask_login.db'

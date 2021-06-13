@@ -4,13 +4,16 @@ from os import environ
 from flask import Flask, render_template, url_for, redirect, request, flash, session, abort, g
 # import the database module
 import sqlite3
+# import the Path module to join the file path with the db uri
+from pathlib import Path
+
 
 app = Flask(__name__)
 # get the sercet key for the session from .flaskenv
 app.secret_key = environ.get('SECRET_KEY')
 
-# DATABASE_PATH = Path(__file__).parent / '/database/flask_login.db'
-DATABASE_PATH = 'database/flask_login.db'
+# get the database uri froom the .flaskenv
+DATABASE_PATH = Path(__file__).parent / environ.get('DATABASE_URI')
 
 
 # building a connection to database before each request
