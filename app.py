@@ -38,7 +38,6 @@ def home():
 def login():
     # if you are already login, redirect to your profile
     if 'username' in session:
-        app.logger.debug(session['username'])
         return redirect(url_for('profile', username=session['username']))
     else:
         return render_template('login.html')
@@ -54,7 +53,7 @@ def loginAuth():
     user = cursor.execute(
         '''
         SELECT [id], [username]
-        FROM [users]
+        FROM [user]
         WHERE [username] = :username AND [password] = :password
         ''',
         {'username': username, 'password': password}).fetchone()
@@ -71,7 +70,7 @@ def loginAuth():
         user = cursor.execute(
             '''
             SELECT [username], [firstname], [lastname], [email]
-            FROM [users]
+            FROM [user]
             WHERE [username] = :username
             ''',
             {'username': username}).fetchone()
@@ -102,7 +101,7 @@ def profile(username=None):
         user = cursor.execute(
             '''
             SELECT [username], [firstname], [lastname], [email]
-            FROM [users]
+            FROM [user]
             WHERE [username] = :username
             ''',
             {'username': username}).fetchone()
